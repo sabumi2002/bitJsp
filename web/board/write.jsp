@@ -16,8 +16,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <%--    ckeditor 라이브러리 가져오기--%>
+    <script src="/assets/js%20library/build/ckeditor.js"></script>
     <title>글 작성하기</title>
+    <style>
+        .ck-editor__editable{
+            height:500px;
+            color:black;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid">
@@ -32,9 +41,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                        <textarea name="content" class="form-control">
-
-                        </textarea>
+                            <textarea id="editor" name="content"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -47,7 +54,15 @@
         </div>
     </div>
 </div>
-
+<script>
+    ClassicEditor.create(document.querySelector('#editor'), {
+        style: {
+            height: 100
+        }
+    }).catch(error => {
+        console.log(error);
+    });
+</script>
 </body>
 </html>
 
